@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ruler Clinic Hospital</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #2f2f2f;
+}
+
+/* TOP HEADER */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to right, #6a1b9a, #8e24aa);
+    color: white;
+    padding: 10px 20px;
+}
+
+.header h1 {
+    font-size: 20px;
+}
+
+.logout {
+    background: #5a2a2a;
+    padding: 8px 15px;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+
+/* MAIN LAYOUT */
+.container {
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 200px;
+    background: #4b3f3f;
+    height: 100vh;
+    padding-top: 30px;
+    color: white;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background: #6a4c4c;
+}
+
+/* MAIN CONTENT */
+.main {
+    flex: 1;
+    background: #eaeaea;
+    padding: 20px;
+}
+
+/* FORM BOX */
+.form-box {
+    background: white;
+    padding: 20px;
+    width: 70%;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* INPUTS */
+input {
+    padding: 10px;
+    margin: 10px;
+    width: 60%;
+}
+
+label {
+    display: inline-block;
+    width: 120px;
+}
+
+/* BUTTONS */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.save {
+    background: #8b2c2c;
+    color: black;
+}
+
+.clear {
+    background: darkred;
+    color: white;
+}
+
+/* GENDER BUTTONS */
+.gender-btn {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    background: #8b2c2c;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <img src="peace.jpg" width="60" height="60">
+    <h1>RULER CLINIC HOSPITAL</h1>
+    <button class="logout">LOGOUT</button>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="container">
+
+    <!-- SIDEBAR -->
+   <div class="sidebar">
+    <a href="register.html">_REGISTER</a>
+    <a href="patient.html">_PATIENT</a>
+    <a href="appointment.html">_APPOINTMENT</a>
+</div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="form-box">
+            <h3>PATIENT REGISTRATION FORM</h3>
+
+            <label>Patient Name:</label>
+            <input type="text" id="name"><br>
+
+            <label>Age:</label>
+            <input type="number" id="age"><br>
+
+            <label>Gender:</label>
+            <button class="gender-btn" onclick="setGender('Male')">MALE</button>
+            <button class="gender-btn" onclick="setGender('Female')">FEMALE</button>
+
+            <p id="genderText"></p>
+
+            <br>
+
+            <button class="btn save" onclick="savePatient()">SAVE PATIENT</button>
+            <button class="btn clear" onclick="clearForm()">CLEAR</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+let gender = "";
+
+// SET GENDER
+function setGender(g) {
+    gender = g;
+    document.getElementById("genderText").innerText = "Selected: " + g;
+}
+
+// SAVE PATIENT
+function savePatient() {
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+
+    if (name === "" || age === "" || gender === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let patient = {
+        name: name,
+        age: age,
+        gender: gender
+    };
+
+    let patients = JSON.parse(localStorage.getItem("patients")) || [];
+    patients.push(patient);
+    localStorage.setItem("patients", JSON.stringify(patients));
+
+    alert("Patient Saved Successfully!");
+    clearForm();
+}
+
+// CLEAR FORM
+function clearForm() {
+    document.getElementById("name").value = "";
+    document.getElementById("age").value = "";
+    document.getElementById("genderText").innerText = "";
+    gender = "";
+}
+
+</script>
+
+</body>
+</html>

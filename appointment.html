@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Appointment Page</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eaeaea;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to right, #6a1b9a, #8e24aa);
+    color: white;
+    padding: 10px 20px;
+}
+
+.header h1 {
+    font-size: 18px;
+}
+
+/* LAYOUT */
+.container {
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 200px;
+    background: #4b3f3f;
+    height: 100vh;
+    padding-top: 30px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background: #6a4c4c;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 25px;
+    width: 60%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+/* INPUT */
+input, select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* BUTTON */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    background: #8e24aa;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #6a1b9a;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <img src="peace.jpg" width="50" height="50">
+    <h1>RULER CLINIC HOSPITAL</h1>
+</div>
+
+<!-- LAYOUT -->
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <a href="index.html">HOME</a>
+        <a href="register.html">REGISTER</a>
+        <a href="patient.html">PATIENT</a>
+        <a href="appointment.html">APPOINTMENT</a>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="card">
+
+            <h2>BOOK APPOINTMENT</h2>
+
+            <input type="text" placeholder="Patient Name">
+
+            <select>
+                <option>Select Doctor</option>
+                <option>Dr John</option>
+                <option>Dr Mary</option>
+                <option>Dr Peter</option>
+            </select>
+
+            <input type="date">
+            <input type="time">
+
+            <button class="btn">BOOK APPOINTMENT</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
